@@ -12,18 +12,19 @@ ARG LLVM_VERSION=16.0.6-15
 # Update package list and install dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    wget git git-lfs graphviz default-jre libtinfo5 g++-${GCC_VERSION} gdb googletest gcovr cmake \
-    clang-${LLVM_VERSION} clang-tidy-${LLVM_VERSION} clang-format-${LLVM_VERSION} doxygen && \
+    wget=1.21.3-1+deb12u1 git=1:2.39.5-0+deb12u2 git-lfs=3.3.0-1+deb12u1 graphviz=2.42.2-7+deb12u1 \
+    default-jre=2:1.17-74 libtinfo5=6.4-4 g++-${GCC_VERSION} gdb=13.1-3 googletest=1.12.1-0.2 gcovr=5.2-1 cmake=3.25.1-1 \
+    clang-${LLVM_VERSION} clang-tidy-${LLVM_VERSION} clang-format-${LLVM_VERSION} doxygen=1.9.4-4 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Specify default versions via update alternatives
-RUN update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-${LLVM_VERSION} 100 && \
-    update-alternatives --set clang-tidy /usr/bin/clang-tidy-${LLVM_VERSION} && \
-    update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${LLVM_VERSION} 100 && \
-    update-alternatives --set clang-format /usr/bin/clang-format-${LLVM_VERSION} && \
-    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_VERSION} 100 && \
-    update-alternatives --set g++ /usr/bin/g++-${GCC_VERSION}
+RUN update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-16 100 && \
+    update-alternatives --set clang-tidy /usr/bin/clang-tidy-16 && \
+    update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-16 100 && \
+    update-alternatives --set clang-format /usr/bin/clang-format-16 && \
+    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 100 && \
+    update-alternatives --set g++ /usr/bin/g++-11
 
 # Install bazelisk tool
 RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.26.0/bazelisk-linux-amd64 && \

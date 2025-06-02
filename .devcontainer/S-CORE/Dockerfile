@@ -6,8 +6,8 @@ FROM ${BASE_IMAGE} AS builder
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Define arguments for versions
-ARG GCC_VERSION=11
-ARG LLVM_VERSION=16
+ARG GCC_VERSION=11.3.0-12
+ARG LLVM_VERSION=16.0.6-15
 
 # Update package list and install dependencies
 RUN apt-get update && \
@@ -29,6 +29,3 @@ RUN update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-
 RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.26.0/bazelisk-linux-amd64 && \
     chmod +x bazelisk-linux-amd64 && \
     mv bazelisk-linux-amd64 /usr/local/bin/bazel
-
-# Clean up the Docker cache layer and avoid leaving residuals
-# No additional layer for USER root as it's redundant when specified first

@@ -32,6 +32,6 @@ RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.26.0/bazeli
     mv bazelisk-linux-amd64 /usr/local/bin/bazel
 
 # Install buildifier
-# RUN wget https://github.com/bazelbuild/buildtools/releases/download/5.1.3/buildifier-linux-amd64 && \
-#     chmod +x buildifier-linux-amd64 && \
-#     mv buildifier-linux-amd64 /usr/local/bin/buildifier
+RUN wget https://github.com/bazelbuild/buildtools/releases/download/v8.2.0/buildifier-linux-amd64 && \
+    chmod +x buildifier-linux-amd64 && \
+    mv buildifier-linux-amd64 /usr/bin/buildifier

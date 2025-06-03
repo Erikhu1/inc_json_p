@@ -25,7 +25,6 @@
 				"jebbs.plantuml",
 				"streetsidesoftware.code-spell-checker",
 				"BazelBuild.vscode-bazel",
-				"llvm-vs-code-extensions.vscode-clangd",
 				"eamodio.gitlens"
 			]
 		}

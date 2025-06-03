@@ -21,14 +21,11 @@
 				"ms-vscode.cmake-tools",
 				"ms-vscode.makefile-tools",
 				"ms-vscode.cpptools-extension-pack",
-				"hediet.vscode-drawio", //for drawio integration
-				"jebbs.plantuml", //to preview PlantUML diagrams
-				// "lextudio.restructuredtext",// Some convenient extensions for editing reStructuredText files
-				// "swyddfa.esbonio", // Linting and live preview for score docs
-				// "usernamehw.errorlens", // ErrorLens highlights errors and warnings in your code / docs
-				// "charliermarsh.ruff", // Linting and formatting for Python (LSP via ruff server)
-				"streetsidesoftware.code-spell-checker" // Code Spell checker
-
+				"hediet.vscode-drawio",
+				"jebbs.plantuml",
+				"streetsidesoftware.code-spell-checker",
+				"BazelBuild.vscode-bazel",
+				"llvm-vs-code-extensions.vscode-clangd"
 			]
 		}
 	}

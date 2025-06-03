@@ -30,3 +30,8 @@ RUN update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-
 RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.26.0/bazelisk-linux-amd64 && \
     chmod +x bazelisk-linux-amd64 && \
     mv bazelisk-linux-amd64 /usr/local/bin/bazel
+
+# Install buildifier
+# RUN wget https://github.com/bazelbuild/buildtools/releases/download/5.1.3/buildifier-linux-amd64 && \
+#     chmod +x buildifier-linux-amd64 && \
+#     mv buildifier-linux-amd64 /usr/local/bin/buildifier

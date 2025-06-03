@@ -10,3 +10,30 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+
+load("@rules_license//rules:license.bzl", "license")
+
+package(
+    default_applicable_licenses = [":license"],
+)
+
+exports_files([
+    "LICENSE.MIT",
+])
+
+license(
+    name = "license",
+    license_kinds = ["@rules_license//licenses/spdx:MIT"],
+    license_text = "LICENSE.MIT",
+)
+
+cc_library(
+    name = "json",
+    hdrs = [
+        "include/nlohmann/detail/input/lexer.hpp",
+        "include/nlohmann/detail/input/parser.hpp",
+        ],
+    includes = ["include"],
+    visibility = ["//visibility:public"],
+    alwayslink = True,
+)

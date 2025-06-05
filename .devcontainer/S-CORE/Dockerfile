@@ -35,6 +35,3 @@ RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.26.0/bazeli
 RUN wget https://github.com/bazelbuild/buildtools/releases/download/v8.2.0/buildifier-linux-amd64 && \
     chmod +x buildifier-linux-amd64 && \
     mv buildifier-linux-amd64 /usr/bin/buildifier
-
-# Switch to non-root user
-USER erikhu

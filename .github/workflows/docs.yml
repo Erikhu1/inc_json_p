@@ -36,6 +36,17 @@ jobs:
       pages: write
       pull-requests: write
       id-token: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Bazel
+        uses: bazelbuild/setup-bazel@v3 # This assumes Bazel setup, adjust tag as needed
+
+      - name: Build documentation
+        run: |
+          sudo useradd -m nonrootuser || true
+          sudo -u nonrootuser -H bash -c 'bazel build ${{ inputs.bazel-target }}'
 
     with:
       bazel-target: "//docs:github_pages"

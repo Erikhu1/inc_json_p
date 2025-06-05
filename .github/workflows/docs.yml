@@ -14,7 +14,7 @@
 name: Documentation
 
 permissions:
-  content: write
+  contents: write
   pages: write
   pull-requests: write
   id-token: write

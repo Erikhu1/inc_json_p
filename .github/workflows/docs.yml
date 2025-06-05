@@ -21,31 +21,22 @@ permissions:
 
 on:
   pull_request_target:
-    types: [opened, reopened, synchronize]
+    types: [opened, reopened, synchronize] # Allows forks to trigger the docs build
   push:
     branches:
       - main
+  merge_group:
+    types: [checks_requested]
 
 jobs:
   build-docs:
-    runs-on: ubuntu-latest
-
+    uses: eclipse-score/cicd-workflows/.github/workflows/docs.yml@main
     permissions:
       contents: write
       pages: write
       pull-requests: write
       id-token: write
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Bazel
-        uses: bazelbuild/setup-bazel@v3
-
-      - name: Build documentation
-        run: |
-          # Creating a non-root user named 'nonrootuser'
-          sudo useradd -m nonrootuser || true
-          # Running Bazel build command as non-root user
-          sudo -u nonrootuser -H bash -c 'bazel build //docs:github_pages'
+    with:
+      bazel-target: "//docs:github_pages"
+      retention-days: 3

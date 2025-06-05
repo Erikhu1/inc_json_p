@@ -36,11 +36,5 @@ RUN wget https://github.com/bazelbuild/buildtools/releases/download/v8.2.0/build
     chmod +x buildifier-linux-amd64 && \
     mv buildifier-linux-amd64 /usr/bin/buildifier
 
-# Create a non-root user and group
-RUN groupadd -r nonroot && useradd -r -g nonroot nonroot
-
-# Change ownership of relevant directories if needed
-RUN chown -R nonroot:nonroot /usr/local/bin /path/to/your/build/dir
-
 # Switch to non-root user
-USER nonroot
+USER erikhu

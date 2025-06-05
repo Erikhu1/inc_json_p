@@ -16,9 +16,3 @@ docs(
     #   source_dir = "docs",
     source_files_to_scan_for_needs_links = [],
 )
-genrule(
-    name = "github_pages",
-    srcs = [],  # add any source files needed for the docs, or leave empty if not needed
-    outs = ["github_pages_dummy.txt"],  # dummy output file
-    cmd = "echo 'This is a placeholder for the github_pages target.' > $@",
-)

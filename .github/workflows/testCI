@@ -1,0 +1,13 @@
+name: Test CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      bazel-target:
+        description: "Custom Bazel target to run (e.g.: 'test //src/...')"
+        required: false
+        default: "test //..."
+        type: string
+jobs:
+  tests:
+    uses: eclipse-score/cicd-workflows/.github/workflows/tests.yml@main

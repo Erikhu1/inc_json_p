@@ -10,10 +10,11 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+
 name: Tests
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       bazel-target:
         description: "Custom Bazel target to run (e.g.: 'test //src/...')"

@@ -32,7 +32,7 @@ cc_library(
     hdrs = [
         "include/nlohmann/detail/input/lexer.hpp",
         "include/nlohmann/detail/input/parser.hpp",
-        ],
+    ],
     includes = ["include"],
     visibility = ["//visibility:public"],
     alwayslink = True,

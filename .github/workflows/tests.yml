@@ -14,7 +14,7 @@
 name: Tests
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       bazel-target:
         description: "Custom Bazel target to run (e.g.: 'test //src/...')"

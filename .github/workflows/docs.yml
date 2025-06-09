@@ -10,7 +10,6 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-
 name: Documentation
 
 permissions:
@@ -36,7 +35,6 @@ jobs:
       pages: write
       pull-requests: write
       id-token: write
-
     with:
       bazel-target: "//docs:github_pages"
       retention-days: 3

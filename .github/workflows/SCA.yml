@@ -14,12 +14,8 @@
 name: Static Code Analysis
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
+    types: [opened, synchronize, reopened]
 
 jobs:
   clang-tidy:
@@ -30,14 +26,11 @@ jobs:
 
       - name: Install Clang
         run: |
-          apt-get update
-          apt-get install -y clang
+          sudo apt-get update
+          sudo apt-get install -y clang
 
       - name: Run Bazel Build
         run: bazel build //...  # Compiles all targets
 
       - name: Run Clang-Tidy
-        run: bazel run //:clang_tidy --fix-errors -p . $(find . -name '*.cpp')
-
-
-#t
+        run: //:clang_tidy --fix-errors -p . $(find . -name '*.cpp')

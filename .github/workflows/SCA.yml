@@ -33,4 +33,5 @@ jobs:
         run: bazel build //...  # Compiles all targets
 
       - name: Run Clang-Tidy
-        run: //:clang_tidy --fix-errors -p . $(find . -name '*.cpp')
+        run: |
+          find . -name '*.cpp' -print0 | xargs -0 clang-tidy -p bazel-bin --fix-errors

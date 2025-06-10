@@ -35,4 +35,4 @@ jobs:
 
       - name: Run Clang-Tidy
         run: |
-          find . -name '*.cpp' -print0 | xargs -0 clang-tidy -p bazel-bin --fix-errors
+          find . -name '*.cpp' -print0 | xargs -0 clang-tidy -p bazel-bin --fix-errors -checks='*'

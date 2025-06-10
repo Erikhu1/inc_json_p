@@ -48,9 +48,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y clang-format
 
-      - name: Run Bazel Build
-        run: bazel run refresh_compile_commands
-
       - name: Run Clang-Format
         run: |
           find . -name '*.cpp' -print0 | xargs -0 clang-format -i

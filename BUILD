@@ -16,6 +16,7 @@ load("@score_format_checker//:macros.bzl", "use_format_targets")
 load("@score_python_basics//:defs.bzl", "score_virtualenv")
 load("@score_starpls_lsp//:starpls.bzl", "setup_starpls")
 load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
+load("@rules_cc//cc:cc_test.bzl", "cc_test")
 load("//:project_config.bzl", "PROJECT_CONFIG")
 
 setup_starpls(
@@ -64,7 +65,7 @@ refresh_compile_commands(
 )
 
 cc_test(
-    name = "my_test",
+    name = "cpp_test_main",
     srcs = ["//tests/cpp:test_main.cpp"],
     deps = [
         "@googletest//:gtest",      # Ensure this corresponds to GoogleTest

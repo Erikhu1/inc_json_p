@@ -65,7 +65,7 @@ refresh_compile_commands(
 
 cc_test(
     name = "my_test",
-    srcs = ["path/to/your/test.cpp"],
+    srcs = ["/workspaces/inc_json_p/tests/cpp/test_main.cpp"],
     deps = [
         "@googletest//:gtest",      # Ensure this corresponds to GoogleTest
         "@googletest//:gtest_main", # Main function for tests

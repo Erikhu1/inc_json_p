@@ -17,3 +17,6 @@ cc_test(
         "@googletest//:gtest_main",  # GoogleTest dependency via Bazel Modules
     ],
 )
+
+
+exports_files(["test_main.cpp"], visibility = ["//visibility:public"])

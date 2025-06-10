@@ -1,0 +1,53 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+name: Static Code Analysis
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  clang-tidy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Clang
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-tidy
+          sudo apt-get install -y build-essential libc++-dev libc++abi-dev
+
+      - name: Run Bazel Build
+        run: bazel run refresh_compile_commands
+
+      - name: Run Clang-Tidy
+        run: |
+          find . -name '*.cpp' -print0 | xargs -0 clang-tidy -p /workspaces/inc_json_p/compile_commands.json --fix-errors -checks='*'
+
+  clang-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Clang Format
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format
+
+      - name: Run Clang-Format
+        run: |
+          find . -name '*.cpp' -print0 | xargs -0 clang-format -i

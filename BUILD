@@ -70,7 +70,7 @@ cc_test(
         "@googletest//:gtest",      # Ensure this corresponds to GoogleTest
         "@googletest//:gtest_main", # Main function for tests
     ],
-    visibility = ["//visibility:public"]
+    visibility = ["//visibility:public"],
 )
 
 # Add target for formatting checks

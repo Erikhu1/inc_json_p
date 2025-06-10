@@ -30,9 +30,14 @@ jobs:
           sudo apt-get install -y clang-tidy
           sudo apt-get install -y build-essential libc++-dev libc++abi-dev
 
+      - name: List Directory Structure
+        run: |
+          pwd
+          ls -la
+
       - name: Run Bazel Build
         run: bazel build //...  # Compiles all targets
 
       - name: Run Clang-Tidy
         run: |
-          find . -name '*.cpp' -print0 | xargs -0 clang-tidy -p bazel-bin --fix-errors -checks='*'
+          find . -name '*.cpp' -print0 | xargs -0 clang-tidy -p /workspaces/inc_json_p/compile_commands.json --fix-errors -checks='*'
